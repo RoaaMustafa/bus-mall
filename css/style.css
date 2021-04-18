@@ -24,9 +24,14 @@ img{
     height: 300px;
     cursor: pointer;
 }
- /* img:active{
-     background-color: black;
-}  */
+ img:hover{
+    box-shadow: 30px 30px 30px 30px rgba(2, 2, 1, 0.178);
+} 
+img:active{ 
+        background-color: #3e8e41;
+        box-shadow: 0 10px rgba(102, 102, 102, 0);
+        transform: translateY(8px);
+      }
 ul{
     width:80%;
     background-color: rgb(253, 216, 253);
