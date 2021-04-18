@@ -7,16 +7,17 @@ h1{
     color: rgb(151, 0, 156);
 }
 body{
-    background-color: rgb(253, 216, 253);
+    background-color: rgb(247, 197, 247);
 }
 
 
 #sec-one{
-    float: left;
-    width: 50%;
+    position: relative;
+    /* float: left; */
+    width: 100%;
 }   
 #sec-two{
-    float: right;
+    /* float: right; */
     width: 50%;
 }
 img{
@@ -25,7 +26,7 @@ img{
     height: 300px;
 }
 ul{
-    width: 80%;
+    width:80%;
     background-color: rgb(253, 216, 253);
 }
 
