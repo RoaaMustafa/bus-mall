@@ -24,6 +24,9 @@ img{
     height: 300px;
     cursor: pointer;
 }
+ /* img:active{
+     background-color: black;
+}  */
 ul{
     width:80%;
     background-color: rgb(253, 216, 253);
