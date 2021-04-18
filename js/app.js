@@ -1,8 +1,8 @@
 'use strict';
 
-let oneImageElement = document.getElementById('img-one');
-let twoImageElement = document.getElementById('img-two');
-let threeImageElement = document.getElementById('img-three');
+let firstImageElement = document.getElementById('img-one');
+let secondImageElement = document.getElementById('img-two');
+let thirdImageElement = document.getElementById('img-three');
 // whenever we click on an image we need to add one to a counter
 // counts of the rounds till we reach 25
 let counts = 0;
@@ -16,9 +16,10 @@ function Catalog (name,source){
   this.source = source;
   this.votes = 0;
   Catalog.allImages.push(this);
-  // an attribute
-  Catalog.allImages =[];
-  // instances
+}
+// an attribute
+Catalog.allImages =[];
+// instances
 new Catalog('bag','../images/bag.jpg');//[0]
 new Catalog('banana','../images/banana.jpg');//[1]
 new Catalog('bathroom','../images/bathroom.jpg');//[2]
@@ -39,4 +40,61 @@ new Catalog('unicorn','../images/unicorn.jpg');//[16]
 new Catalog('usb','../images/usb.gif');//[17]
 new Catalog('water-can','../images/water-can.jpg');//[18]
 new Catalog('wine-glass','../images/wine-glass.jpg');//[19]
-console.log(Catalog.allImages);
+//console.log(Catalog.allImages);
+function renderThreeImages(){
+  firstIndex = genrateRandomIndex();
+  secondIndex = genrateRandomIndex();
+  thirdIndex = genrateRandomIndex();
+  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ){
+    firstIndex = genrateRandomIndex();
+    secondIndex= genrateRandomIndex();
+    while(firstIndex === secondIndex){
+      secondIndex= genrateRandomIndex();
+    }
+  }
+  // console.log(firstIndex);
+  // console.log(secondIndex);
+  // console.log(thirdIndex);
+  // Catalog.allImages[3].source
+  // displaying the images
+  firstImageElement.src = Catalog.allImages[firstIndex].source;
+  secondImageElement.src = Catalog.allImages[secondIndex].source;
+  thirdImageElement.src =Catalog.allImages[thirdIndex].source;
+}
+renderThreeImages();
+firstImageElement.addEventListener('click', handleClicking);
+secondImageElement.addEventListener('click',handleClicking);
+thirdImageElement.addEventListener('click',handleClicking);
+function handleClicking(event){
+  // console.log(event.target.id);
+  counts++;
+  if(maxAttempts >= counts){
+    if(event.target.id ==='img-one'){
+      Catalog.allImages[firstIndex].votes++;
+    }else if(event.target.id ==='img-two'){
+      Catalog.allImages[secondIndex].votes++;
+    }else if(event.target.id ==='img-three'){
+      Catalog.allImages[thirdIndex].votes++;
+    }
+    renderThreeImages();
+    console.log(Catalog.allImages);
+  }else {
+    renderList();
+    firstImageElement.removeEventListener('click', handleClicking);
+    secondImageElement.removeEventListener('click',handleClicking);
+    thirdImageElement.removeEventListener('click',handleClicking);
+  }
+}
+function renderList(){
+  let ul = document.getElementById('unList');
+  for(let i = 0 ; i <Catalog.allImages.length;i++){
+    let li = document.createElement('li');
+    ul.appendChild(li);
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes`;
+  }
+}
+
+
+function genrateRandomIndex(){
+  return Math.floor(Math.random() * Catalog.allImages.length);
+}
