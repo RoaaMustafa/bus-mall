@@ -13,16 +13,14 @@ body{
 
 #sec-one{
     position: relative;
-    /* float: left; */
     width: 100%;
 }   
 #sec-two{
-    /* float: right; */
     width: 50%;
 }
 img{
     display: inline-block;
-    width: 40%;
+    width: 30%;
     height: 300px;
 }
 ul{

@@ -94,9 +94,10 @@ function renderList(){
   for(let i = 0 ; i <Catalog.allImages.length;i++){
     let li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has repeated for ${Catalog.allImages[i].numDisplay}`;
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has displayed for ${Catalog.allImages[i].numDisplay } times`;
   }
-}console.log(Catalog.allImages);
+}
+console.log(Catalog.allImages);
 
 function genrateRandomIndex(){
   return Math.floor(Math.random() * Catalog.allImages.length);
