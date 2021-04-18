@@ -15,6 +15,7 @@ function Catalog (name,source){
   this.name= name;
   this.source = source;
   this.votes = 0;
+  this.numDisplay=0;
   Catalog.allImages.push(this);
 }
 // an attribute
@@ -71,10 +72,13 @@ function handleClicking(event){
   if(maxAttempts >= counts){
     if(event.target.id ==='img-one'){
       Catalog.allImages[firstIndex].votes++;
+      Catalog.allImages[firstIndex].numDisplay+=1;
     }else if(event.target.id ==='img-two'){
       Catalog.allImages[secondIndex].votes++;
+      Catalog.allImages[secondIndex].numDisplay+=1;
     }else if(event.target.id ==='img-three'){
       Catalog.allImages[thirdIndex].votes++;
+      Catalog.allImages[thirdIndex].numDisplay+=1;
     }
     renderThreeImages();
     console.log(Catalog.allImages);
@@ -90,10 +94,9 @@ function renderList(){
   for(let i = 0 ; i <Catalog.allImages.length;i++){
     let li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes`;
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has repeated for ${Catalog.allImages[i].numDisplay}`;
   }
-}
-
+}console.log(Catalog.allImages);
 
 function genrateRandomIndex(){
   return Math.floor(Math.random() * Catalog.allImages.length);
