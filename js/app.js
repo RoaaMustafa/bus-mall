@@ -59,8 +59,11 @@ function renderThreeImages(){
   // Catalog.allImages[3].source
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
+  Catalog.allImages[firstIndex].numDisplay++;
   secondImageElement.src = Catalog.allImages[secondIndex].source;
+  Catalog.allImages[secondIndex].numDisplay++;
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
+  Catalog.allImages[thirdIndex].numDisplay++;
 }
 renderThreeImages();
 firstImageElement.addEventListener('click', handleClicking);
@@ -72,13 +75,10 @@ function handleClicking(event){
   if(maxAttempts >= counts){
     if(event.target.id ==='img-one'){
       Catalog.allImages[firstIndex].votes++;
-      Catalog.allImages[firstIndex].numDisplay+=1;
     }else if(event.target.id ==='img-two'){
       Catalog.allImages[secondIndex].votes++;
-      Catalog.allImages[secondIndex].numDisplay+=1;
     }else if(event.target.id ==='img-three'){
       Catalog.allImages[thirdIndex].votes++;
-      Catalog.allImages[thirdIndex].numDisplay+=1;
     }
     renderThreeImages();
     console.log(Catalog.allImages);
