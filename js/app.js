@@ -6,7 +6,7 @@ let thirdImageElement = document.getElementById('img-three');
 // whenever we click on an image we need to add one to a counter
 // counts of the rounds till we reach 25
 let counts = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
