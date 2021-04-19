@@ -79,11 +79,11 @@ function handleClicking(event){
       Catalog.allImages[secondIndex].votes++;
     }else if(event.target.id ==='img-three'){
       Catalog.allImages[thirdIndex].votes++;
-    // }
-    // else {
-      // alert('you should click on an image');
-      // counts--;
     }
+    // else {
+    //   alert('you should click on an image');
+    //   counts--;
+    // }
     renderThreeImages();
     console.log(Catalog.allImages);
   }else {
