@@ -111,3 +111,4 @@ console.log(Catalog.allImages);
 function genrateRandomIndex(){
   return Math.floor(Math.random() * Catalog.allImages.length);
 }
+
