@@ -56,14 +56,12 @@ function renderThreeImages(){
     firstIndex = genrateRandomIndex();
     secondIndex= genrateRandomIndex();
     thirdIndex= genrateRandomIndex();
-    arrOfindex.push(firstIndex);
-    arrOfindex.push(secondIndex);
-    arrOfindex.push(thirdIndex);
   }
+  arrOfindex.push(firstIndex);
+  arrOfindex.push(secondIndex);
+  arrOfindex.push(thirdIndex);
   console.log(arrOfindex);
-  // console.log(firstIndex);
-  // console.log(secondIndex);
-  // console.log(thirdIndex);
+
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
   Catalog.allImages[firstIndex].display++;
