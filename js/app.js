@@ -106,7 +106,7 @@ function renderList(){
     arrOfdisplay.push(Catalog.allImages[i].display);
     let li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it h as displayed for ${Catalog.allImages[i].display } times`;
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has been displayed for ${Catalog.allImages[i].display } times`;
   }
 }
 console.log(Catalog.allImages);

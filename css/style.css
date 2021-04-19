@@ -52,3 +52,12 @@ li{
     color: azure;
     
 }
+#sec-two >:not(button){
+    position: relative;
+    left :200px;
+    padding:20px;
+    border-radius: 20px;
+}
+#unList li:nth-child(odd){
+    background-color: rgb(255, 183, 131);
+}
