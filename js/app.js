@@ -25,13 +25,13 @@ function Catalog (name,source){
 // an attribute
 Catalog.allImages =[];
 // instances
-new Catalog('bag','../images/bag.jpg');//[0]
-new Catalog('banana','../images/banana.jpg');//[1]
-new Catalog('bathroom','../images/bathroom.jpg');//[2]
-new Catalog('boots','../images/boots.jpg');//[3]
-new Catalog('breakfast','../images/breakfast.jpg');//[4]
-new Catalog('bubblegum','../images/bubblegum.jpg');//[5]
-new Catalog('chair','../images/chair.jpg');//[6]
+new Catalog('bag','./images/bag.jpg');//[0]
+new Catalog('banana','./images/banana.jpg');//[1]
+new Catalog('bathroom','./images/bathroom.jpg');//[2]
+new Catalog('boots','./images/boots.jpg');//[3]
+new Catalog('breakfast','./images/breakfast.jpg');//[4]
+new Catalog('bubblegum','./images/bubblegum.jpg');//[5]
+new Catalog('chair','./images/chair.jpg');//[6]
 new Catalog('cthulhu','./images/cthulhu.jpg');//[7]
 new Catalog('dog-duck','./images/dog-duck.jpg');//[8]
 new Catalog('dragon','./images/dragon.jpg');//[9]
