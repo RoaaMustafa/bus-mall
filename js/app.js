@@ -57,18 +57,18 @@ function renderThreeImages(){
     secondIndex= genrateRandomIndex();
     thirdIndex= genrateRandomIndex();
   }
-  arrOfindex.push(firstIndex);
-  arrOfindex.push(secondIndex);
-  arrOfindex.push(thirdIndex);
-  console.log(arrOfindex);
+  // console.log(arrOfindex);
 
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
   Catalog.allImages[firstIndex].display++;
+  arrOfindex.push(firstIndex);
   secondImageElement.src = Catalog.allImages[secondIndex].source;
   Catalog.allImages[secondIndex].display++;
+  arrOfindex.push(secondIndex);
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
   Catalog.allImages[thirdIndex].display++;
+  arrOfindex.push(thirdIndex);
 }
 renderThreeImages();
 container.addEventListener('click', handleClicking);
