@@ -10,12 +10,16 @@ let maxAttempts = 25;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
+let arrOfVotes = [];
+let arrOfnames=[];
+let arrOfdisplay=[];
+
 // create constructor function
 function Catalog (name,source){
   this.name= name;
   this.source = source;
   this.votes = 0;
-  this.numDisplay=0;
+  this.display=0;
   Catalog.allImages.push(this);
 }
 // an attribute
@@ -42,38 +46,36 @@ new Catalog('usb','./images/usb.gif');//[17]
 new Catalog('water-can','./images/water-can.jpg');//[18]
 new Catalog('wine-glass','./images/wine-glass.jpg');//[19]
 //console.log(Catalog.allImages);
+let arrOfindex=[];
 function renderThreeImages(){
   firstIndex = genrateRandomIndex();
   secondIndex = genrateRandomIndex();
   thirdIndex = genrateRandomIndex();
-  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ){
+  // Catalog.allImages.push(this.);
+  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex||arrOfindex.includes(firstIndex)||arrOfindex.includes(secondIndex)||arrOfindex.includes(thirdIndex)){
     firstIndex = genrateRandomIndex();
     secondIndex= genrateRandomIndex();
-    while(firstIndex === secondIndex){
-      secondIndex= genrateRandomIndex();
-    }
+    thirdIndex= genrateRandomIndex();
   }
-  // console.log(firstIndex);
-  // console.log(secondIndex);
-  // console.log(thirdIndex);
-  // Catalog.allImages[3].source
+  // console.log(arrOfindex);
+
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
-  Catalog.allImages[firstIndex].numDisplay++;
+  Catalog.allImages[firstIndex].display++;
+  arrOfindex.push(firstIndex);
   secondImageElement.src = Catalog.allImages[secondIndex].source;
-  Catalog.allImages[secondIndex].numDisplay++;
+  Catalog.allImages[secondIndex].display++;
+  arrOfindex.push(secondIndex);
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
-  Catalog.allImages[thirdIndex].numDisplay++;
+  Catalog.allImages[thirdIndex].display++;
+  arrOfindex.push(thirdIndex);
 }
 renderThreeImages();
 container.addEventListener('click', handleClicking);
-// firstImageElement.addEventListener('click', handleClicking);
-// secondImageElement.addEventListener('click',handleClicking);
-// thirdImageElement.addEventListener('click',handleClicking);
 function handleClicking(event){
   // console.log(event.target.id);
   counts++;
-  if(maxAttempts > counts){
+  if(maxAttempts >= counts){
     if(event.target.id ==='img-one'){
       Catalog.allImages[firstIndex].votes++;
     }else if(event.target.id ==='img-two'){
@@ -82,32 +84,57 @@ function handleClicking(event){
       Catalog.allImages[thirdIndex].votes++;
     }
     renderThreeImages();
-    console.log(Catalog.allImages);
+    // console.log(Catalog.allImages);
   }else {
     // renderList();
     alert ('Press to see Results');
     container.removeEventListener('click', handleClicking);
-    // firstImageElement.removeEventListener('click', handleClicking);
-    // secondImageElement.removeEventListener('click',handleClicking);
-    // thirdImageElement.removeEventListener('click',handleClicking);
   }
 }
 let button =document.getElementById('btn');
 button.addEventListener('click',showingList);
 function showingList (){
   renderList();
+  chart();
   button.removeEventListener('click',showingList);
 }
 function renderList(){
   let ul = document.getElementById('unList');
   for(let i = 0 ; i <Catalog.allImages.length;i++){
+    arrOfnames.push(Catalog.allImages[i].name);
+    arrOfVotes.push(Catalog.allImages[i].votes);
+    arrOfdisplay.push(Catalog.allImages[i].display);
     let li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has displayed for ${Catalog.allImages[i].numDisplay } times`;
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it h as displayed for ${Catalog.allImages[i].display } times`;
   }
 }
 console.log(Catalog.allImages);
 
 function genrateRandomIndex(){
   return Math.floor(Math.random() * Catalog.allImages.length);
+}
+function chart(){
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: arrOfnames,
+      datasets: [{
+        label: '# of Votes',
+        data: arrOfVotes,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+        ],
+        borderWidth: 1
+      },{
+        label:'# of View',
+        data: arrOfdisplay,
+        backgroundColor:[
+          'rgb(192,192,192)',
+        ],
+        borderWidth: 1
+      }]
+    },
+  });
 }
