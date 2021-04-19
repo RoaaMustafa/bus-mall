@@ -6,7 +6,7 @@ let thirdImageElement = document.getElementById('img-three');
 // whenever we click on an image we need to add one to a counter
 // counts of the rounds till we reach 25
 let counts = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
@@ -64,7 +64,6 @@ function renderThreeImages(){
   // console.log(firstIndex);
   // console.log(secondIndex);
   // console.log(thirdIndex);
-  // Catalog.allImages[3].source
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
   Catalog.allImages[firstIndex].display++;
@@ -73,6 +72,7 @@ function renderThreeImages(){
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
   Catalog.allImages[thirdIndex].display++;
 }
+renderThreeImages();
 renderThreeImages();
 container.addEventListener('click', handleClicking);
 // firstImageElement.addEventListener('click', handleClicking);
