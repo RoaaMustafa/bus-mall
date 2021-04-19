@@ -10,6 +10,9 @@ let maxAttempts = 25;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
+let arrOfVotes = [];
+let arrOfnames=[];
+let arrOfdisplay=[];
 // create constructor function
 function Catalog (name,source){
   this.name= name;
@@ -17,6 +20,7 @@ function Catalog (name,source){
   this.votes = 0;
   this.numDisplay=0;
   Catalog.allImages.push(this);
+  Catalog.allImages.push(this.name);
 }
 // an attribute
 Catalog.allImages =[];
@@ -96,11 +100,14 @@ let button =document.getElementById('btn');
 button.addEventListener('click',showingList);
 function showingList (){
   renderList();
+  chart();
   button.removeEventListener('click',showingList);
 }
 function renderList(){
   let ul = document.getElementById('unList');
   for(let i = 0 ; i <Catalog.allImages.length;i++){
+    arrOfVotes.push(Catalog.allImages[i].votes);
+    arrOfdisplay.push(Catalog.allImages[i].display);
     let li = document.createElement('li');
     ul.appendChild(li);
     li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has displayed for ${Catalog.allImages[i].numDisplay } times`;
@@ -111,4 +118,27 @@ console.log(Catalog.allImages);
 function genrateRandomIndex(){
   return Math.floor(Math.random() * Catalog.allImages.length);
 }
-
+function chart(){
+  let chtx = document.getElementById('myChart');
+  let myChart = new Chart(chtx, { // its an instance
+    type: 'bar',
+    data: {
+      labels: arrOfnames,
+      datasets: [{
+        label: '# of Votes',
+        data: arrOfVotes,
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderWidth: 1
+      },{
+        label: '# of Displayed',
+        data: arrOfdisplay,
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderWidth: 1
+      }]
+    }
+  });
+}
