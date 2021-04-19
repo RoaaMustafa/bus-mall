@@ -87,11 +87,13 @@ function handleClicking(event){
     renderThreeImages();
     console.log(Catalog.allImages);
   }else {
-    renderList();
+    // renderList();
     firstImageElement.removeEventListener('click', handleClicking);
     secondImageElement.removeEventListener('click',handleClicking);
     thirdImageElement.removeEventListener('click',handleClicking);
   }
+  let button =document.getElementById('btn');
+  button.addEventListener('click',renderList);
 }
 function renderList(){
   let ul = document.getElementById('unList');
