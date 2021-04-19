@@ -92,8 +92,12 @@ function handleClicking(event){
     secondImageElement.removeEventListener('click',handleClicking);
     thirdImageElement.removeEventListener('click',handleClicking);
   }
-  let button =document.getElementById('btn');
-  button.addEventListener('click',renderList);
+}
+let button =document.getElementById('btn');
+button.addEventListener('click',showingList);
+function showingList (){
+  renderList();
+  button.removeEventListener('click',showingList);
 }
 function renderList(){
   let ul = document.getElementById('unList');
