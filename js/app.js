@@ -6,7 +6,7 @@ let thirdImageElement = document.getElementById('img-three');
 // whenever we click on an image we need to add one to a counter
 // counts of the rounds till we reach 25
 let counts = 0;
-let maxAttempts = 25;
+let maxAttempts = 5;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
@@ -21,7 +21,6 @@ function Catalog (name,source){
   this.votes = 0;
   this.display=0;
   Catalog.allImages.push(this);
-  // Catalog.allImages.push(this.name);
 }
 // an attribute
 Catalog.allImages =[];
@@ -47,19 +46,20 @@ new Catalog('usb','../images/usb.gif');//[17]
 new Catalog('water-can','../images/water-can.jpg');//[18]
 new Catalog('wine-glass','../images/wine-glass.jpg');//[19]
 //console.log(Catalog.allImages);
+let arrOfindex=[];
 function renderThreeImages(){
   firstIndex = genrateRandomIndex();
   secondIndex = genrateRandomIndex();
   thirdIndex = genrateRandomIndex();
-  let arrOfindex=[];
-  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ||arrOfindex.includes(firstIndex)||arrOfindex.includes(secondIndex)||arrOfindex.includes(thirdIndex)){
+  // Catalog.allImages.push(this.);
+  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex||arrOfindex.includes(firstIndex)||arrOfindex.includes(secondIndex)||arrOfindex.includes(thirdIndex)){
     firstIndex = genrateRandomIndex();
     secondIndex= genrateRandomIndex();
     thirdIndex= genrateRandomIndex();
+    arrOfindex.push(firstIndex);
+    arrOfindex.push(secondIndex);
+    arrOfindex.push(thirdIndex);
   }
-  arrOfindex[0]=firstIndex;
-  arrOfindex[1]=secondIndex;
-  arrOfindex[2]=thirdIndex;
   console.log(arrOfindex);
   // console.log(firstIndex);
   // console.log(secondIndex);
@@ -72,7 +72,6 @@ function renderThreeImages(){
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
   Catalog.allImages[thirdIndex].display++;
 }
-renderThreeImages();
 renderThreeImages();
 container.addEventListener('click', handleClicking);
 function handleClicking(event){
@@ -87,7 +86,7 @@ function handleClicking(event){
       Catalog.allImages[thirdIndex].votes++;
     }
     renderThreeImages();
-    console.log(Catalog.allImages);
+    // console.log(Catalog.allImages);
   }else {
     // renderList();
     alert ('Press to see Results');
