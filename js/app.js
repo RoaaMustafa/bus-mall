@@ -1,12 +1,12 @@
 'use strict';
-
+let container =document.getElementById('sec-one');
 let firstImageElement = document.getElementById('img-one');
 let secondImageElement = document.getElementById('img-two');
 let thirdImageElement = document.getElementById('img-three');
 // whenever we click on an image we need to add one to a counter
 // counts of the rounds till we reach 25
 let counts = 0;
-let maxAttempts = 25;
+let maxAttempts = 5;
 let firstIndex;
 let secondIndex;
 let thirdIndex;
@@ -66,13 +66,14 @@ function renderThreeImages(){
   Catalog.allImages[thirdIndex].numDisplay++;
 }
 renderThreeImages();
-firstImageElement.addEventListener('click', handleClicking);
-secondImageElement.addEventListener('click',handleClicking);
-thirdImageElement.addEventListener('click',handleClicking);
+container.addEventListener('click', handleClicking);
+// firstImageElement.addEventListener('click', handleClicking);
+// secondImageElement.addEventListener('click',handleClicking);
+// thirdImageElement.addEventListener('click',handleClicking);
 function handleClicking(event){
   // console.log(event.target.id);
   counts++;
-  if(maxAttempts >= counts){
+  if(maxAttempts > counts){
     if(event.target.id ==='img-one'){
       Catalog.allImages[firstIndex].votes++;
     }else if(event.target.id ==='img-two'){
@@ -80,17 +81,15 @@ function handleClicking(event){
     }else if(event.target.id ==='img-three'){
       Catalog.allImages[thirdIndex].votes++;
     }
-    // else {
-    //   alert('you should click on an image');
-    //   counts--;
-    // }
     renderThreeImages();
     console.log(Catalog.allImages);
   }else {
     // renderList();
-    firstImageElement.removeEventListener('click', handleClicking);
-    secondImageElement.removeEventListener('click',handleClicking);
-    thirdImageElement.removeEventListener('click',handleClicking);
+    alert ('Press to see Results');
+    container.removeEventListener('click', handleClicking);
+    // firstImageElement.removeEventListener('click', handleClicking);
+    // secondImageElement.removeEventListener('click',handleClicking);
+    // thirdImageElement.removeEventListener('click',handleClicking);
   }
 }
 let button =document.getElementById('btn');
