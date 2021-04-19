@@ -62,13 +62,13 @@ function renderThreeImages(){
   // displaying the images
   firstImageElement.src = Catalog.allImages[firstIndex].source;
   Catalog.allImages[firstIndex].display++;
-  arrOfindex.push(firstIndex);
+  arrOfindex[0]=(firstIndex);
   secondImageElement.src = Catalog.allImages[secondIndex].source;
   Catalog.allImages[secondIndex].display++;
-  arrOfindex.push(secondIndex);
+  arrOfindex[1]=(secondIndex);
   thirdImageElement.src =Catalog.allImages[thirdIndex].source;
   Catalog.allImages[thirdIndex].display++;
-  arrOfindex.push(thirdIndex);
+  arrOfindex[2]=(thirdIndex);
 }
 renderThreeImages();
 container.addEventListener('click', handleClicking);
