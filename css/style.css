@@ -43,3 +43,12 @@ li{
     list-style: none;
     color: rgb(113, 9, 231);
 }
+#btn{
+    position: relative;
+    left: 60%;
+    background-color: rgb(164, 76, 247);
+    height: 40px;
+    border-radius: 20px;
+    color: azure;
+    
+}
