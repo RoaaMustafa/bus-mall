@@ -52,7 +52,7 @@ function renderThreeImages(){
   secondIndex = genrateRandomIndex();
   thirdIndex = genrateRandomIndex();
   let arrOfindex=[];
-  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ||arrOfindex.includes(firstIndex||secondIndex||thirdIndex)){
+  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ||arrOfindex.includes(firstIndex)||arrOfindex.includes(secondIndex)||arrOfindex.includes(thirdIndex)){
     firstIndex = genrateRandomIndex();
     secondIndex= genrateRandomIndex();
     thirdIndex= genrateRandomIndex();
@@ -75,9 +75,6 @@ function renderThreeImages(){
 renderThreeImages();
 renderThreeImages();
 container.addEventListener('click', handleClicking);
-// firstImageElement.addEventListener('click', handleClicking);
-// secondImageElement.addEventListener('click',handleClicking);
-// thirdImageElement.addEventListener('click',handleClicking);
 function handleClicking(event){
   // console.log(event.target.id);
   counts++;
@@ -95,9 +92,6 @@ function handleClicking(event){
     // renderList();
     alert ('Press to see Results');
     container.removeEventListener('click', handleClicking);
-    // firstImageElement.removeEventListener('click', handleClicking);
-    // secondImageElement.removeEventListener('click',handleClicking);
-    // thirdImageElement.removeEventListener('click',handleClicking);
   }
 }
 let button =document.getElementById('btn');
