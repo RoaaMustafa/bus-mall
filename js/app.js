@@ -13,6 +13,7 @@ let thirdIndex;
 let arrOfVotes = [];
 let arrOfnames=[];
 let arrOfdisplay=[];
+
 // create constructor function
 function Catalog (name,source){
   this.name= name;
@@ -50,10 +51,16 @@ function renderThreeImages(){
   firstIndex = genrateRandomIndex();
   secondIndex = genrateRandomIndex();
   thirdIndex = genrateRandomIndex();
-  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ){
+  let arrOfindex=[];
+  while(firstIndex === secondIndex || firstIndex===thirdIndex || secondIndex===thirdIndex ||arrOfindex.includes(firstIndex||secondIndex||thirdIndex)){
     firstIndex = genrateRandomIndex();
     secondIndex= genrateRandomIndex();
+    thirdIndex= genrateRandomIndex();
   }
+  arrOfindex[0]=firstIndex;
+  arrOfindex[1]=secondIndex;
+  arrOfindex[2]=thirdIndex;
+  console.log(arrOfindex);
   // console.log(firstIndex);
   // console.log(secondIndex);
   // console.log(thirdIndex);
@@ -108,7 +115,7 @@ function renderList(){
     arrOfdisplay.push(Catalog.allImages[i].display);
     let li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it has displayed for ${Catalog.allImages[i].numDisplay } times`;
+    li.textContent = `${Catalog.allImages[i].name} it has ${Catalog.allImages[i].votes} Votes and it h as displayed for ${Catalog.allImages[i].display } times`;
   }
 }
 console.log(Catalog.allImages);
