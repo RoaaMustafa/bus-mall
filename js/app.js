@@ -60,6 +60,7 @@ function getStorageItem() {
   //   let list = JSON.parse(data || '[]');
   if (order !== null) {
     Catalog.allImages = order;
+    // renderList();
   }
 }
 let arrOfindex=[];
