@@ -53,7 +53,7 @@ function saveToLs(){
 }
 // getting the item from the LS and it should have a key
 function getStorageItem() {
-  let data = localStorage.getItem('imageSaved');
+  let data = localStorage.getItem('imagesSaved');
   // Converting from JSON Format to normal Arr of object
   let order = JSON.parse(data);
   console.log(data);
@@ -113,6 +113,7 @@ function handleClicking(event){
 let button =document.getElementById('btn');
 button.addEventListener('click',showingList);
 function showingList (){
+  getStorageItem();
   renderList();
   chart();
   button.removeEventListener('click',showingList);
