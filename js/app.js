@@ -18,7 +18,7 @@ let arrOfdisplay=[];
 function Catalog (name,source){
   this.name= name;
   this.source = source;
-  this.votes = 0;
+  // this.votes = 0;
   this.display=0;
   Catalog.allImages.push(this);
 }
