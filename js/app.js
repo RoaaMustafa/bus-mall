@@ -45,7 +45,24 @@ new Catalog('unicorn','./images/unicorn.jpg');//[16]
 new Catalog('usb','./images/usb.gif');//[17]
 new Catalog('water-can','./images/water-can.jpg');//[18]
 new Catalog('wine-glass','./images/wine-glass.jpg');//[19]
-//console.log(Catalog.allImages);
+//to set items Catalog.allImages into localstorage
+function saveToLs(){
+  //console.log(JSON.stringify(Catalog.allImages));
+  let storage =JSON.stringify(Catalog.allImages);
+  localStorage.setItem('imagesSaved',storage);
+}
+// getting the item from the LS and it should have a key
+function getStorageItem() {
+  let data = localStorage.getItem('imagesSaved');
+  // Converting from JSON Format to normal Arr of object
+  let order = JSON.parse(data);
+  console.log(data);
+  //   let list = JSON.parse(data || '[]');
+  if (order !== null) {
+    Catalog.allImages = order;
+    renderList();
+  }
+}
 let arrOfindex=[];
 function renderThreeImages(){
   firstIndex = genrateRandomIndex();
@@ -72,6 +89,7 @@ function renderThreeImages(){
 }
 renderThreeImages();
 container.addEventListener('click', handleClicking);
+getStorageItem();
 function handleClicking(event){
   // console.log(event.target.id);
   counts++;
@@ -84,6 +102,7 @@ function handleClicking(event){
       Catalog.allImages[thirdIndex].votes++;
     }
     renderThreeImages();
+    saveToLs();
     // console.log(Catalog.allImages);
   }else {
     // renderList();
@@ -94,6 +113,7 @@ function handleClicking(event){
 let button =document.getElementById('btn');
 button.addEventListener('click',showingList);
 function showingList (){
+  getStorageItem();
   renderList();
   chart();
   button.removeEventListener('click',showingList);
